@@ -1,3 +1,0 @@
-KiCAD files for final version
-Gerbers for final version
-Bill of Materials
