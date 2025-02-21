@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="100.0mm"
+   height="100.0mm"
+   viewBox="0 0 100.0 100.0"
+   version="1.1"
+   id="svg1"
+   inkscape:version="1.3.2 (091e20e, 2023-11-25, custom)"
+   sodipodi:docname="air-quality-pcb-2.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     inkscape:zoom="2.768771"
+     inkscape:cx="265.09957"
+     inkscape:cy="222.66196"
+     inkscape:window-width="1920"
+     inkscape:window-height="991"
+     inkscape:window-x="-9"
+     inkscape:window-y="-9"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="g2" />
+  <defs
+     id="defs1" />
+  <g
+     inkscape:label="[fixed] BG"
+     inkscape:groupmode="layer"
+     sodipodi:insensitive="true"
+     id="g1">
+    <rect
+       x="0"
+       y="0"
+       width="100.0"
+       height="100.0"
+       style="fill:#FFFFFF;fill-opacity:1;stroke:none"
+       id="rect1" />
+  </g>
+  <g
+     inkscape:label="Edge.Cuts"
+     inkscape:groupmode="layer"
+     id="g2">
+    <path
+       id="rect10"
+       style="fill:none;stroke:#000000;stroke-width:0.2;stroke-dasharray:none"
+       d="M 10.231934 32.131889 L 10.231934 67.868209 L 89.768164 67.868209 L 89.768164 32.131889 L 10.231934 32.131889 z M 12.599748 32.948893 A 1.5509958 1.5509958 0 0 1 14.151074 34.499703 A 1.5509958 1.5509958 0 0 1 12.599748 36.050513 A 1.5509958 1.5509958 0 0 1 11.048938 34.499703 A 1.5509958 1.5509958 0 0 1 12.599748 32.948893 z M 87.399833 32.948893 A 1.5509958 1.5509958 0 0 1 88.95116 34.499703 A 1.5509958 1.5509958 0 0 1 87.399833 36.050513 A 1.5509958 1.5509958 0 0 1 85.849023 34.499703 A 1.5509958 1.5509958 0 0 1 87.399833 32.948893 z M 12.599748 63.949068 A 1.5509958 1.5509958 0 0 1 14.151074 65.500395 A 1.5509958 1.5509958 0 0 1 12.599748 67.051204 A 1.5509958 1.5509958 0 0 1 11.048938 65.500395 A 1.5509958 1.5509958 0 0 1 12.599748 63.949068 z M 87.399833 63.949068 A 1.5509958 1.5509958 0 0 1 88.95116 65.500395 A 1.5509958 1.5509958 0 0 1 87.399833 67.051204 A 1.5509958 1.5509958 0 0 1 85.849023 65.500395 A 1.5509958 1.5509958 0 0 1 87.399833 63.949068 z " />
+  </g>
+  <g
+     inkscape:label="B.Cu"
+     inkscape:groupmode="layer"
+     id="g3" />
+  <g
+     inkscape:label="B.Mask"
+     inkscape:groupmode="layer"
+     id="g4" />
+  <g
+     inkscape:label="B.SilkS"
+     inkscape:groupmode="layer"
+     id="g5">
+    <path
+       id="rect2"
+       style="fill:none;stroke:#000000;stroke-width:0.2"
+       d="m 30.039798,40.0718 h 1.856399 v 19.856397 h -1.856399 z" />
+    <path
+       id="rect3"
+       style="fill:none;stroke:#000000;stroke-width:0.2"
+       d="m 22.019246,36.099506 v -1.897499 h 9.897499 v 1.897499 z" />
+    <path
+       id="rect4"
+       style="fill:none;stroke:#000000;stroke-width:0.2"
+       d="m 42.129452,38.402317 v -1.804638 h 37.804641 v 1.804638 z" />
+    <path
+       id="rect5"
+       style="fill:none;stroke:#000000;stroke-width:0.2"
+       d="m 42.129452,63.402317 v -1.804638 h 37.804641 v 1.804638 z" />
+  </g>
+  <g
+     inkscape:label="F.Cu"
+     inkscape:groupmode="layer"
+     id="g6" />
+  <g
+     inkscape:label="F.Mask"
+     inkscape:groupmode="layer"
+     id="g7" />
+  <g
+     inkscape:label="F.SilkS"
+     inkscape:groupmode="layer"
+     id="g8">
+    <path
+       id="rect11"
+       style="fill:none;stroke:#000000;stroke-width:0.2"
+       d="m 54.323032,43.572204 h 12.8704 v 12.8704 h -12.8704 z" />
+    <path
+       id="path12"
+       style="fill:none;stroke:#000000;stroke-width:0.2"
+       d="m 44.196815,49.992595 a 4.9550438,4.9550438 0 0 1 -4.955044,4.955044 4.9550438,4.9550438 0 0 1 -4.955044,-4.955044 4.9550438,4.9550438 0 0 1 4.955044,-4.955044 4.9550438,4.9550438 0 0 1 4.955044,4.955044 z" />
+  </g>
+  <g
+     inkscape:label="Dwgs.User"
+     inkscape:groupmode="layer"
+     id="g9" />
+  <g
+     inkscape:label="Drill"
+     inkscape:groupmode="layer"
+     id="g10" />
+</svg>

@@ -1,0 +1,3 @@
+Tinkercad template with set holes - for laser cutting
+svg for laser cutting example
+Fusion file & stl for 3D printed 'cage' to protect wiring
