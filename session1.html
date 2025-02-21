@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Air Quality Monitors - Session 1</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto|Roboto+Mono&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+  <header>
+    <header>
+      <a href="https://scienceoxford.com" target="_blank"><img src=".\images\so_logo.png" alt="Science Oxford Logo" width="400px" height="auto"></a>
+    <h1>Session 1: programming the sensors and LCD screen</h1>
+    <br>
+  </header>
+
+  <div id="introduction" class="left">
+    <h3>Getting started with your ESP32 and MicroPython</h3>
+    <p>An <strong>ESP32</strong> will be the brains of your device, and you will attach various inputs and outputs to it.</p>
+    <p>We will be programming it in Python during this club; the version of Python used is <strong>MicroPython</strong>, which means that it's a smaller version of the full Python programming language designed to run on <strong>microcontrollers</strong> such as the ESP32 and micro:bit.</p>
+    <p>A lot of background set-up code has been prepared in advance, and so you will use lots of <strong>libraries</strong> in your program. This is how professional programmers work - it is unusual to start everything from scratch yourself!</p>
+    <br>
+    <p>We will be using <a href="https://thonny.org/">Thonny</a> as the editor during these workshops.</p>
+    <br>
+    <h5>Running code</h5>
+    <p>Code is saved in two places - on your computer, and on the ESP32.</p>
+    <p>While you are working on the code, run it from your computer (it will still interact with the ESP32) - only when you are happy with it should you upload it to the device.</p>
+    <img src=".\images\..." alt="screenshot of the Thonny editor, with the file system open, showing files on the computer and files on the device. A file on the computer named first-test.py is highlighted" width="400" height="auto">
+    <br>
+    <p>Double-click on the file named <strong>first-test.py</strong> to open it.</p>
+    <p><strong>Without changing anything</strong>, click the Run button on Thonny's menu.</p>
+    <img src=".\images\..." alt="screenshot of the Thonny editor's menu, with the Run button highlighted" width="400" height="auto">
+    <br>
+    <br>
+    <h5>What does the code do?</h5>
+    <p><strong>Look at Thonny's terminal</strong> - what information are you being given?</p>
+    <p><strong>Look at your ESP32</strong> - what is it doing?</p>
+    <p><strong>Look at your LCD screen</strong> - what is it showing?</p>
+    <br>
+    <p>The terminal is very useful for <strong>debugging</strong>. We use this syntax to send messages to it:</p>
+    <pre>print("this message will show on the terminal!")</pre>
+    <br>
+    <p>The ESP32's <strong>built-in LED is flashing</strong>.</p>
+    <ul>
+      <li>Can you find the line of code that controls this?</li>
+      <li>How do you think you would change the speed?</li>
+    </ul>
+    <br>
+  </div>
+
+  <div id="lcd" class="left">
+    <h3>Using the LCD screen</h3>
+    <p>...</p>
+    <img src=".\images\..." alt="" width="400" height="auto">
+    <br>
+    <pre>    lcd = LCD()
+    lcd[0] = ("Welcome to")
+    lcd[1] = ("Science Oxford")</pre>
+    <br>
+    <br>
+  </div>
+
+  <div id="rgb-led" class="left">
+    <h3>Using the RGB LED</h3>
+    <p>...</p>
+    <img src=".\images\..." alt="" width="400" height="auto">
+    <br>
+    <pre>    red = Pin(14, Pin.OUT, Pin.PULL_DOWN)</pre>
+    <br>
+    <pre>    red.on()
+    green.off()
+    blue.off()</pre>
+    <br>
+    <br>
+  </div>
+
+  <div id="loop" class="left">
+    <h3>Make something change</h3>
+    <p>...</p>
+    <img src=".\images\..." alt="" width="400" height="auto">
+    <br>
+    <pre>    while True:
+        gc.collect()
+        if red.value() == 1:
+            red.off()
+        else:
+            red.on()</pre>
+    <br>
+    <br>
+  </div>
+
+  <div id="sensors" class="left">
+    <h3>Switch code, and use the environment sensor</h3>
+    <p>Now that you have practiced with some of the <strong>outputs</strong>, we can add in the <strong>inputs</strong> - specifically the environmental sensor for your air quality monitor!</p>
+    <p>Save first-test.py, and open <strong>session1.py</strong> in Thonny.</p>
+    <p>There is a lot more code in this one, as more libraries and more set-up code is necessary to get everything working.</p>
+    <p>Look through the file without changing anything first - which parts match what you have used so far?</p>
+    <ul>
+      <li>Can you find where to edit the starting message on the LCD screen?</li>
+      <li>Where would you add code to turn on the RGB LED?</li>
+    </ul>
+    <br>
+    <p>TO ADD</p>
+    <pre>'''
+      Challenge: display data on the LCD screen
+      - we have chosen three to start with - convert to a string and show
+              lcd[0] = str(temp)
+              lcd[1] = str(humidity)
+      - investigate the other values
+              voc = values.get('TVOC')
+      Maths:
+      - could round to an integer before displaying them and add units?
+              lcd[0] = str(round(temp, 1)) + "C"
+      - could get average of the two temperature sensors before displaying them?
+              temp_aht = values.get('AHT_Temp')
+              temp_ens = values.get('ENS_Temp')
+              temp = (temp_aht + temp_ens) / 2
+      '''</pre>
+    
+  </div>
+
+  <footer class="links">
+    <a href="https://github.com/ScienceOxford/robot-camp/2024-club" target="_blank">View on GitHub</a>
+  </footer>
+
+</body>
+
+</html>
