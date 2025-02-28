@@ -42,6 +42,12 @@
     <p>The terminal is very useful for <strong>debugging</strong>. We use this syntax to send messages to it:</p>
     <pre>print("this message will show on the terminal!")</pre>
     <br>
+    <br>
+    <p>In this code, to pause between commands, we are not using standard <code>sleep()</code> functions - this is because of all the background code that needs to keep <strong>in sync</strong> with everything else.</p>
+    <p>To pause, we use this syntax:</p>
+    <pre>await asyncio.sleep(1)</pre>
+    <br>
+    <br>
     <p>The ESP32's <strong>built-in LED is flashing</strong>.</p>
     <ul>
       <li>Can you find the line of code that controls this?</li>
@@ -52,42 +58,89 @@
 
   <div id="lcd" class="left">
     <h3>Using the LCD screen</h3>
-    <p>...</p>
-    <img src=".\images\..." alt="" width="400" height="auto">
-    <br>
+    <p>The screen has two lines which you can put information on in the form of strings.</p>
+    <p>Because Python usually starts counting from zero,</p>
+    <ul>
+      <li>The top line is <code>lcd[0]</code></li>
+      <li>The bottom line is <code>lcd[1]</code></li>
+    </ul>
+    <p>After the screen has been set up, you set the string that you want each line to show.</p>
     <pre>    lcd = LCD()
-    lcd[0] = ("Welcome to")
-    lcd[1] = ("Science Oxford")</pre>
+    lcd[0] = "Welcome to"
+    lcd[1] = "Science Oxford"</pre>
     <br>
+    <ul>
+      <li>Try changing the strings, to change what is displayed on the screen.</li>
+      <li>What happens if you give it information that is longer than the screen?</li>
+    </ul>
+    <br>
+    <h5>Extra challenge:</h5>
+    <p>Test out this code:</p>
+    <pre>lcd.scroll(0, "Hello")</pre>
+    <br>
+    <ul>
+      <li>Can you use this on both lines of the screen?</li>
+      <li>Want to change the speed? Add another <strong>argument</strong> into this function: <code>speed=200</code></li>
+    </ul>
     <br>
   </div>
 
   <div id="rgb-led" class="left">
     <h3>Using the RGB LED</h3>
-    <p>...</p>
-    <img src=".\images\..." alt="" width="400" height="auto">
-    <br>
+    <p>An RGB has been connected to your board as well - this is three lights in one.</p>
+    <p>We have told the ESP32 where they have been connected, using this syntax:</p>
     <pre>    red = Pin(14, Pin.OUT, Pin.PULL_DOWN)</pre>
     <br>
+    <p>To use them, you can turn on, or off, each of the three colours. For example:</p>
     <pre>    red.on()
     green.off()
     blue.off()</pre>
     <br>
+    <h5>Extra challenge:</h5>
+    <p>Once you have turned on a colour, it will stay on until you tell it to turn back off again.</p>
+    <p>To change from red to blue, you need to turn off red and turn on blue, if you don't turn off red, you will get purple.</p>
+    <p>To make it easier to use lots of colours, you can define some <strong>functions</strong> for each.</p>
+    <pre># define your new function
+def make_purple():
+    red.on()
+    green.off()
+    blue.on()
+
+# use your new function
+make_purple()</pre>
     <br>
   </div>
 
   <div id="loop" class="left">
     <h3>Make something change</h3>
-    <p>...</p>
-    <img src=".\images\..." alt="" width="400" height="auto">
+    <p>Until now, we have been setting up code to happen just once.</p>
+    <p>You might have noticed the <code>while True</code> near the end of the programme, which currently doesn't do very much.</p>
+    <p><code>while True</code> is Python's version of a forever loop. Currently, the thing that happens forever is:</p>
+    <pre>gc.collect()</pre>
     <br>
+    <p>This code runs in the background to free up some memory, and helps all the code run smoothly!</p>
+    <p>You can add more things into this loop though, for example, to flash an LED.</p>
+    <br>
+    <p>Try this code example:</p>
     <pre>    while True:
         gc.collect()
         if red.value() == 1:
             red.off()
         else:
-            red.on()</pre>
+            red.on()
+        await asyncio.sleep(1)</pre>
     <br>
+    <ul>
+      <li>Check whether the red LED is on (is the value 1?)</li>
+      <li>If it is on, turn it off</li>
+      <li>If it is not on, turn it on</li>
+    </ul>
+    <p>This causes the red led to flash every time the loop runs.</p>
+    <br>
+    <ul>
+      <li>Can you work out how quickly the loop will repeat at the moment?</li>
+      <li>Remember the syntax we used to pause, can you speed up or slow down the loop?</li>
+    </ul>
     <br>
   </div>
 
@@ -102,23 +155,53 @@
       <li>Where would you add code to turn on the RGB LED?</li>
     </ul>
     <br>
-    <p>TO ADD</p>
-    <pre>'''
-      Challenge: display data on the LCD screen
-      - we have chosen three to start with - convert to a string and show
-              lcd[0] = str(temp)
-              lcd[1] = str(humidity)
-      - investigate the other values
-              voc = values.get('TVOC')
-      Maths:
-      - could round to an integer before displaying them and add units?
-              lcd[0] = str(round(temp, 1)) + "C"
-      - could get average of the two temperature sensors before displaying them?
-              temp_aht = values.get('AHT_Temp')
-              temp_ens = values.get('ENS_Temp')
-              temp = (temp_aht + temp_ens) / 2
-      '''</pre>
-    
+    <h5>Research time!</h5>
+    <p>You will be able to get four main pieces of data from the sensor:</p>
+    <ul>
+      <li>Temperature</li>
+      <li>Humidity level</li>
+      <li>CO2 level</li>
+      <li>VOC level</li>
+    </ul>
+    <br>
+    <p>In pairs, investigate one of these sensors, finding our information such as:</p>
+    <ul>
+      <li><strong>What is it actually measuring?</strong></li>
+      <ul>
+        <li>E.g. temperature is measuring how hot or cold the air is.</li>
+      </ul>
+      <li><strong>What units are usually used?</strong></li>
+      <ul>
+        <li>E.g. we usually measure temperature in degrees Celsius (&deg;C).</li>
+      </ul>
+      <li><strong>What range would you expect in a house?</strong></li>
+      <ul>
+        <li>E.g. a temperature range of 15-25 would be fairly normal, depending on the time of year and whether the heating was on!</li>
+      </ul>
+      <li><strong>What numbers would you want to warn people about?</strong></li>
+      <ul>
+        <li>E.g. if the temperature got too hot or two cold I would want to give a warning.</li>
+        <li>If it got lower than 15&deg;C I would warn you to put the heating on if you are in the house.</li>
+        <li>If it got lower than 5&deg;C I would warn you to put the heating on even if nobody is home.</li>
+        <li>If it got higher than 25&deg;C I would warn you to shut the curtains to keep out the sun.</li>
+      </ul>
+    </ul>
+    <br>
+    <p>Link to your research, coming soon!</p>
+    <br>
+    <h5>Investigating the sensors</h5>
+    <p>Currently, the sensor information is showing up in the terminal - can you find the four sensors amongst the information?</p>
+    <p>We have created four <strong>variables</strong> for the four sensors, in preperation for displaying on the screen - look for them in your code.</p>
+    <p>To start with, pick two sensors to show on your LCD screen, in the example below, I have chosen Temperature and CO2 levels:</p>
+    <pre>lcd[0] = str(temp)
+lcd[1] = str(co2)</pre>
+    <br>
+    <p>The sensor data updates every <strong>30 seconds</strong>.</p>
+    <ul>
+      <li>Are you getting the sorts of numbers you expect based on your research?</li>
+      <li>How can you change the data the sensor is receiving? Can you breath on it, or move to a different area of the classroom?</li>
+    </ul>
+    <br>
   </div>
 
   <footer class="links">
