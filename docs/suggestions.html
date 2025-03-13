@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Air Quality Monitors</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto|Roboto+Mono&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+  <header>
+    <header>
+      <a href="https://scienceoxford.com" target="_blank"><img src=".\images\so_logo.png" alt="Science Oxford Logo" width="400px" height="auto"></a>
+    <h1>Extra Coding Ideas</h1>
+    <br>
+  </header>
+
+  <div id="introduction" class="left">
+    <h3>How to use this page</h3>
+    <p>If you are in our workshops, and finish the computer-aided design or soldering early, you should get out your air quality monitor kit and continue coding!</p>
+    <p>Below are some ideas, and the <strong>syntax</strong> you will need to use, but we have not provided working code examples, as everyone's code is different!</p>
+    <p class="debugging"><strong>If you get stuck, ask one of the workshop leaders for some help.</strong></p>
+    <br>
+    <h5>Click the links to jump to a section:</h5>
+    <p><a href="#lcd">LCD Screen</a></p>
+    <p><a href="#led">RGB LED</a></p>
+    <p><a href="#button">Pushbutton</a></p>
+    <br>
+    <br>
+  </div>
+
+  <div id="lcd" class="left">
+    <h3>Improve your LCD display information</h3>
+    <p>You have a limited number of <strong>characters</strong> on the screen, so you will need to get creative to display your information.</p>
+    <br>
+
+    <h5>Round the numbers down</h5>
+    <p>For some of the sensors, you get a number with lots of decimal places, which takes up more space than you need.</p>
+    <p>Python (including MicroPython) has some built-in maths functions you can use, for example:</p>
+    <pre>temp = values.get('AHT_Temp')
+display_temp = round(temp)
+lcd[0] = str(display_temp)</pre>
+    <br>
+    <p>This will round the number to a whole number. If you would like, for example, one decimal place, you can add another <strong>argument</strong> to the code, like this:</p>
+    <pre>round(temp, 1)</pre>
+    <br>
+    <p><strong>Challenge:</strong> Once you have this code working in your own program, see if you can reduce the number of lines of code needed to get the same result.</p>
+    <br>
+
+    <h5>Add units</h5>
+    <p>To get a number showing on the display, we have converted it into a <strong>string</strong>, using this code:</p>
+    <pre>lcd[0] = str(temp)</pre>
+    <br>
+    <p>Strings can be merged with other strings - we call this <strong>concatenation</strong>.</p>
+    <p>Look at this example:</p>
+    <pre>lcd[0] = str(temp) + "C"</pre>
+    <br>
+    <p>This will stick the character 'C' directly after the number, with no space between them. You can add information before the number too:</p>
+    <pre>lcd[0] = "Temperature: " + str(temp) + "C"</pre>
+    <br>
+    <p><strong>Challenge:</strong> Can you combine the <strong>string concatenation</strong> code with the <strong>number rounding</strong> code described above?</p>
+    <br><br>
+  </div>
+
+  <div id="led" class="left">
+    <h3>Change the RGB LED in response to information</h3>
+    <p>Instead of turning the LED on and off directly, you can use the colours as an indicator or a warning.</p>
+    <p>You will need to decide what you would like to warn about - one specific sensor, use the sensor's 'overall air quality measurement', or just a different colour for different sensors?</p>
+    <p>In the code example below, we will use red to indicate the the temperature is higher than 25C, orange to indicate that it is lower than 15C, and green when it is in between:</p>
+    <pre>temp = values.get('AHT_Temp')
+if temp >= 25:
+    red.on()
+    green.off()
+elif temp >= 15:
+    red.off()
+    green.on()
+else:
+    red.on()
+    green.on()</pre>
+    <br>
+    <p><code>elif</code> means that this code will be ignored if the top condition is met, so you should check the most extreme case first.</p>
+    <br><br>
+  </div>
+
+  <div id="button" class="left">
+    <h3>Use the button</h3>
+    <p>Coming soon...</p>
+    <br><br>
+  </div>
+
+
+  <footer class="links">
+    <a href="https://github.com/ScienceOxford/air-quality-monitors" target="_blank">View on GitHub</a>
+  </footer>
+
+</body>
+
+</html>
