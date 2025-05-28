@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Air Quality Monitors - Session 4</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto|Roboto+Mono&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+  <header>
+    <header>
+      <a href="https://scienceoxford.com" target="_blank"><img src=".\images\so_logo.png" alt="Science Oxford Logo" width="400px" height="auto"></a>
+    <h1>Session 4: programming the website</h1>
+    <br>
+  </header>
+
+  <div id="outline" class="left">
+    <h3>files to work on</h3>
+    <p>During this workshop, we will set up the ESP32s webserver, meaning that you can log into the ESP32's wifi network and view a webpage with more information from your sensors.</p>
+    <p>To do this, we need a few different files:</p>
+    <ul>
+      <li><strong>index.html</strong> - HTML file, where you decide what you want to show on the webpage</li>
+      <li><strong>example.css</strong> - CSS file, where you decide what you want the website to look like, e.g. colours and sizes</li>
+      <li><strong>script.js</strong> - Javascript file, which fetches the sensor data from the ESP32, and puts it into the right place on the webpage - you will not edit this file</li>
+      <li><strong>session4_yourname.py</strong> - Python file, based on your work in earlier sessions, with extra webserver set up code added - you will need to set a password for your ESP32's wifi in here</li>
+    </ul>
+    <br>
+    <p>As there are lots of files to work on, it is important do things in the right order:</p>
+    <ol>
+      <li><a href="#trinket">Write and test your HTML and CSS files in Trinket.</a></li>
+      <li><a href="#saving">Transfer both of these, and any pictures you have added, to the webdocs folder of your AQM files.</a></li>
+      <li><a href="#uploading">Upload the changed files to your ESP32.</a></li>
+      <li><a href="#python">Edit your ESP32's password, then run the session4.py file on your ESP32.</a></li>
+      <li><a href="#troubleshooting">Troubleshoot any errors!</a></li>
+      <li><a href="#using">Log into the ESP32's wifi, then load the webserver page to check it.</a></li>
+    </ol>
+    <br>
+  </div>
+
+  <div id="trinket" class="left">
+    <h3>Step 1 - edit your HTML and CSS files</h3>
+    <p>For ease of testing, we will use Trinket to edit and test these files - use the log-in provided.</p>
+    <p>To start, <strong>minimise the data table</strong> (to make sure that the information from the ESP32 goes to the right place) by clicking the small arrow next to line 14.</p>
+    <iframe src="https://trinket.io/embed/html/2ff319c84361" width="100%" height="600" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe>
+    <br><br>
+    <p class="debugging">If you would like to practice before editing the ESP32's webpage files, you can <a href="https://scienceoxford.github.io/html-website/" target="_blank">try out this example.</a></p>
+    <br>
+    <h5>Edit the text</h5>
+    <p>Text must be contained within <strong>tags</strong>, which describe whether it is a paragraph or a heading for example.</p>
+    <pre> &#60;h1>This is a heading!&#60;/h1></pre><br>
+    <p>In your index.html file, edit the headings and text to personalise your webpage. What information do you think is most important?</p>
+    <br>
+    <h5>Edit the colours</h5>
+    <p>Click the <strong>example.css</strong> tab to switch to the css file.</p>
+    <p>The instructions given here match the tags in your index.html file - find the section that controls how the headings are displayed, and try to change the colours.</p>
+    <pre>h1 {
+  color: darkgreen;
+}</pre><br>
+    <p>To see a list of accepted colour names, <a href="https://www.w3schools.com/cssref/css_colors.php" target="_blank">click here</a>. The colours can also be written in (R, G, B) format, or as hex codes, for more options.</p>
+    <br>
+    <h5>Edit the pictures</h5>
+    <p>The ESP32 has limited memory, so only small images can be added to it, such as icons.</p>
+    <p><a>Search here</a> to download some suitable free images.</p>
+    <p>Click the 'image' tab (see picture below), the 'Image Library', then 'Upload New Image'.</p>
+    <p>Once it is uploaded, you can use the same picture as many times as you like in your project without having to upload it again.</p>
+    <img src="https://scienceoxford.github.io/html-website/images/upload-image.PNG" alt="upload a file screenshot" width="800px" height="auto">
+    <br>
+    <p>Switch back to the tab your code is in e.g. 'index.html' and add the following code on a new line:</p>
+    <pre> &#60;img src="your_image.png" alt="descriptive text" width="200px"></pre>
+    <br>
+    <p>Change "your_image.png" to the name of your image, add descriptive text and choose the size.</p>
+    <br>
+    <p class="debugging"><strong>Challenge: </strong>The table is formatted carefully, so that the Javascript file knows where to put the live sensor data from your ESP32. For more details, including information on what you can change, <a href="" target="_blank">click here</a>.</p>
+    <br>
+  </div>
+
+  <div id="saving" class="left">
+    <h3>Step 2 - moving your files from Trinket to your main code</h3>
+    <p>Once you have finished editing your webpage files, you need to put them onto the ESP32.</p>
+    <p>First, download the files from Trinket onto your computer, by clicking 'Share' -> 'Download'.</p>
+    <img src="./images/download-trinket.png" alt="download files screenshot" width="800px" height="auto">
+    <br>
+    <p>Open the folder on your computer - it should contain index.html, example.css, and the pictures that you uploaded.</p>
+    <p>In a new window, open the AQM folder - this will be on the desktop of the computer in our workshop, or on your USB stick at home - and navigate to:</p>
+    <ol>
+      <li>uploadToEsp</li>
+      <li>webdocs</li>
+    </ol>
+    <p><em>Make sure that you open <strong>webdocs</strong>, not <strong>web</strong>!</em></p>
+    <p>Drag-and-drop all of the Trinket files into this folder, and <strong>allow it to overwrite the original files</strong>.</p>
+    <p>Finally, open Thonny, and check that you can see all of your new files</p>
+    <img src="./images/thonny-files.png" alt="screenshot of Thonny file system" width="200px" height="auto">
+    <br>
+  </div>
+    
+  <div id="uploading" class="left">
+    <h3>Step 3 - uploading the new files to your ESP32</h3>
+    <p>Plug your ESP32 into the computer, and connect it to Thonny by clicking the <strong>red Stop button</strong> on the toolbar - this resets the connection.</p>
+    <p>You should now see two sets on files in Thonny - the top are the files on your computer, the bottom are the files on the ESP32.</p>
+    <p>In the files on the top, <strong>right click</strong> on the <strong>webdocs</strong> folder, and click <strong>Upload to /</strong> - it might take some time, especially if you have multiple pictures.</p>
+    <img src="./images/upload-to.png" alt="screenshot of Thonny upload instructions, as described above" width="800px" height="auto">
+    <p>While you wait, you can assemble your Air Quality Monitor parts - connect your electronics to your laser cut design with nylon bolts.</p>
+    <br>
+  </div>
+
+  <div id="python" class="left">
+    <h3>Step 4 - creating a password, and running your new code</h3>
+    <p>Once your files have been successfully uploaded to the ESP32, you can continue. If the upload fails, check the troubleshooting tips below!</p>
+    <p>Open <strong>session1_yourname.py</strong> in Thonny - this is your code from earlier sessions, with some extra set-up code added in.</p>
+    <p>Scroll through the code to line 137:</p>
+    <pre>    password = 'password'</pre><br>
+    <p>Change the word inside apostrophes to something else - choose something you can type quickly for now, but you can change it later!</p>
+    <p>Run this code by clicking the <strong>green Play button</strong> on Thonny's toolbar and look out for any erros!</p>
+    <p>If the terminal begins showing you the sensor data, then you can skip to <a href="#using">Step 6</a>. If anything goes wrong, keep reading for some troubleshooting tips.</p>
+    <br>
+  </div>
+
+  <div id="troubleshooting" class="left">
+    <h3>Step 5 - checking for errors</h3>
+    <p>Coming soon!</p>
+    <br>
+  </div>
+
+  <div id="using" class="left">
+    <h3>Step 6 - logging into your ESP32</h3>
+    <p>While your ESP32 is running its code, it is broadcaseing its own WiFi network.</p>
+    <p>If you are in our workshop, you can borrow a tablet to test it, or you can use your own device.</p>
+    <p>Follow these steps to see your webpage:</p>
+    <ol>
+      <li>Make sure your ESP32 is plugged in, and running the code - you should see sensor data in the terminal on Thonny.</li>
+      <li>On your ESP32, click the button twice quickly (double-press) - the network information should show up on the screen.</li>
+      <li>On a tablet or phone, open Wifi settings.</li>
+      <li>Disconnect from the current Wifi.</li>
+      <li>On the list, find the network that matches the one shown on your ESP32's screen - it will start <strong>ESP_</strong>. If you are in our workshop, you will see lots of devices, make sure you click on your own!</li>
+      <li>When prompted, type the password you set in your code.</li>
+      <li>Once connected - it will complain that there is no internet, that is okay! - open a web browser.</li>
+      <li>Navigate to the numbers shown on your ESP32's screen, e.g. <strong>192.168.4.1</strong>.</li>
+      <li>Check out your webpage!</li>
+    </ol>
+    <br>
+  </div>
+
+  <footer class="links">
+    <a href="https://github.com/ScienceOxford/air-quality-monitors" target="_blank">View on GitHub</a>
+  </footer>
+
+</body>
+
+</html>
