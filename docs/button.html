@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Air Quality Monitors - Pushbuttons</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto|Roboto+Mono&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+  <header>
+    <header>
+      <a href="https://scienceoxford.com" target="_blank"><img src=".\images\so_logo.png" alt="Science Oxford Logo" width="400px" height="auto"></a>
+    <h1>Understanding and editing the Pushbutton code</h1>
+    <br>
+  </header>
+
+  <div id="current-code" class="left">
+    <h3>How does the current code work?</h3>
+    <p>The button has three functions:</p>
+    <ul>
+      <li>Quick/normal press - Click it one</li>
+      <li>Double press - click it twice quickly</li>
+      <li>Long press - Click and hold</li>
+    </ul>
+    <br>
+    <p>In the code, starting around line 37, the first two types of press are being used, but the long press currently does nothing.</p>
+    <p>For each type, doing the press toggles between showing something on the screen and showing the data you have chosen to display.</p>
+    <br>
+    <p>The structure of the working buttons is:</p>
+    <pre>async def wait_press(e, lcd):
+  global data
+  while True:
+    await e.wait()
+    e.clear()
+    print("Debugging: button pressed")
+        
+    if data == True:
+      # do something
+      data = False
+
+    else:
+      lcd[0] = ""
+      lcd[1] = ""
+      data = True</pre>
+    <br>
+    <p>Breaking this down:</p>
+    <h5>Set up</h5>
+    <ul>
+      <li><code>async def  </code> starts the function, there is one for each type of button press</li>
+      <li><code>global data  </code> accesses the variable that checks whether you are 'data collection mode' or not</li>
+      <li><code>while True:  </code>always do the following code</li>
+      <li><code>await e.wait(), e.clear()  </code>background set up code</li>
+      <li><code>print():  </code>give you some information to help with debugging</li>
+    </ul>
+    <br>
+
+    <h5>Editable</h5>
+    <ul>
+      <li><code>if data == True:  </code>are you currently displaying data? If True, do something new.</li>
+      <li><code>data = False  </code>if you are doing something else, you are not in data collection mode, so let the code know this</li>
+      <li><code>else:  </code>if you are NOT in data collection mode, clear the display, and put yourself back into data mode - this is how you 'exit' the new code and go back to displaying the data.</li>
+    </ul>
+    <br>
+  </div>
+
+  <div id="long-press" class="left">
+    <h3>Edit the Long Press</h3>
+    <p>The code feels complicated, but what you are doing is either displaying the data set up further down in your code, or displaying something else.</p>
+    <p>To start with, leave button press and double press alone, as they do useful things, and edit the long press code only.</p>
+    <ol>
+      <li>Find the 'long press' function - this will be around line 86.</li>
+      <li>The set up code is already there, do not change this.</li>
+      <li>Add the code shown above, (<code>if data = True: else:</code>).</li>
+      <li>What do you want to show on the LCD screen when you long press the button? A message? Some other data?</li>
+    </ol>
+    <br>
+    <p>If you are confident editing the button presses, you can also change the behaviour of the other two.</p>
+  </div>
+
+  <footer class="links">
+    <a href="https://github.com/ScienceOxford/air-quality-monitors" target="_blank">View on GitHub</a>
+  </footer>
+
+</body>
+
+</html>

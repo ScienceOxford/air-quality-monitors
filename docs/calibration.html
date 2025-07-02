@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Air Quality Monitors - Temperature Calibration</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto|Roboto+Mono&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+  <header>
+    <header>
+      <a href="https://scienceoxford.com" target="_blank"><img src=".\images\so_logo.png" alt="Science Oxford Logo" width="400px" height="auto"></a>
+    <h1>Calibrate the temperature</h1>
+    <br>
+  </header>
+
+  <div id="instructions" class="left">
+    <h3>Checking the temperature</h3>
+    <p>The temperature sensor is very close to the ESP32, which generates heat, so will always give a value higher than the room.</p>
+    <p>Once your device is set up to show you the temperature, compare the results against a thermometer - try this in a few different areas of the room for best results and take an average.</p>
+    <p><em>Note: there are a lot of variables, so it is not possible to get a perfect result.</em></p>
+    <br>
+    <h3>Edit the code</h3>
+    <p>When you have worked out the average difference between the sensor value and the actual temperature, add the offset into the code - this is on around line 148.</p>
+    <pre>ens = ENS160AHT21(interval = 30, temp_offset = 0</pre>
+    <br>
+    <ul>
+      <li>interval is how often it updates itself (in seconds)</li>
+      <li>temp_offset is where you add your new value - should this be positive or negative?</li>
+    </ul>
+  </div>
+
+  <footer class="links">
+    <a href="https://github.com/ScienceOxford/air-quality-monitors" target="_blank">View on GitHub</a>
+  </footer>
+
+</body>
+
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Air Quality Monitors - RGB LED</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto|Roboto+Mono&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+  <header>
+    <header>
+      <a href="https://scienceoxford.com" target="_blank"><img src=".\images\so_logo.png" alt="Science Oxford Logo" width="400px" height="auto"></a>
+    <h1>Using the LED as an Indicator</h1>
+    <br>
+  </header>
+
+  <div id="instructions" class="left">
+    <h3>Change the RGB LED in response to information</h3>
+    <p>Instead of turning the LED on and off directly, you can use the colours as an indicator or a warning.</p>
+    <p>You will need to decide what you would like to warn about - one specific sensor, use the sensor's 'overall air quality measurement', or just a different colour for different sensors?</p>
+    <p>In the code example below, we will use red to indicate the the temperature is higher than 25C, orange to indicate that it is lower than 15C, and green when it is in between:</p>
+    <pre>temp = values.get('Temp')
+if temp >= 25:
+    red.on()
+    green.off()
+elif temp >= 15:
+    red.off()
+    green.on()
+else:
+    red.on()
+    green.on()</pre>
+    <br>
+    <p><code>elif</code> means that this code will be ignored if the top condition is met, so you should check the most extreme case first.</p>
+    <br>
+    <h5>What should it respond to?</h5>
+    <p>In the example above, the LED responds to the temperature.</p>
+    <p>Other options include:</p>
+    <pre>temp = values.get('Temp')
+humidity = values.get('RH')
+co2 = values.get('CO2')
+voc = values.get('VOC')
+co2_rating = values.get('CO2_Rating')
+voc_ration = values.get('VOC_Rating')
+air_quality_index = values.get('AQI')</pre>
+    <br>
+  </div>
+
+  <div id="extension" class="left">
+    <h3>Future improvements - more control over the colours</h3>
+    <p>There is another way to use the RGB LED, by importing a library.</p>
+    <p>The code for this is still under construction, but you can view the <a href="https://github.com/johngouk/scienceoxford-project2025/blob/main/uploadToEsp/lib/RGBLed.py" target="_blank">library code here</a>.</p>
+    <p>Check back here in the future for some instructions!</p>
+  </div>
+
+  <footer class="links">
+    <a href="https://github.com/ScienceOxford/air-quality-monitors" target="_blank">View on GitHub</a>
+  </footer>
+
+</body>
+
+</html>
